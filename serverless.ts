@@ -18,6 +18,19 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
+      goldmakS3BucketArn: "${cf:goldmak-iac-aws-dev.goldmakS3BucketArn}",
+      goldmakS3BucketName: "${cf:goldmak-iac-aws-dev.goldmakS3BucketName}",
+    },
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: "Allow",
+            Resource: ["${env:goldmakS3BucketArn}/*"],
+            Action: ["s3:PutObject", "s3:GetObject"],
+          },
+        ],
+      },
     },
   },
   // import the function via paths

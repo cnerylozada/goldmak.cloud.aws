@@ -6,7 +6,7 @@ export const uploadFiles = {
     {
       http: {
         method: "post",
-        path: "hello",
+        path: "upload-files",
       },
     },
   ],
