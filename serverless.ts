@@ -20,6 +20,7 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
       goldmakS3BucketArn: "${cf:goldmak-iac-aws-dev.goldmakS3BucketArn}",
       goldmakS3BucketName: "${cf:goldmak-iac-aws-dev.goldmakS3BucketName}",
+      providerRegion: "${self:provider.region}",
     },
     iam: {
       role: {
