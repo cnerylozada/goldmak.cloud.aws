@@ -26,7 +26,7 @@ const serverlessConfiguration: AWS = {
         statements: [
           {
             Effect: "Allow",
-            Resource: ["${env:goldmakS3BucketArn}/*"],
+            Resource: ["${self:provider.environment.goldmakS3BucketArn}/*"],
             Action: ["s3:PutObject", "s3:GetObject"],
           },
         ],
