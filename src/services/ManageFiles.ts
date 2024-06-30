@@ -32,7 +32,6 @@ export class ManageFiles {
     const response = await client.send(command);
 
     return {
-      ...response,
       objectURL: `https://s3.${process.env.providerRegion}.amazonaws.com/${bucketName}/${keyByResourceType}`,
     };
   }

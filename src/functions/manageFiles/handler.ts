@@ -24,7 +24,7 @@ export const uploadFile: Handler = async (event: APIGatewayProxyEvent) => {
       "Access-Control-Allow-Credentials": true,
     },
     body: JSON.stringify({
-      response: response,
+      response,
     }),
   };
 };
