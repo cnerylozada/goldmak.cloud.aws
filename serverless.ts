@@ -34,6 +34,52 @@ const serverlessConfiguration: AWS = {
       },
     },
   },
+  resources: {
+    Resources: {
+      goldmakManageFilesApiKey: {
+        Type: "AWS::ApiGateway::ApiKey",
+        Properties: {
+          Name: "goldmakManageFilesApiKey",
+          Enabled: true,
+          Value: "e132923a-77d8-4216-8edd-4c0d87c1fed0",
+        },
+      },
+      goldmakManageFilesUsePlan: {
+        Type: "AWS::ApiGateway::UsagePlan",
+        Properties: {
+          UsagePlanName: "goldmakManageFilesUsePlan",
+          Quota: {
+            Limit: 5000,
+            Period: "MONTH",
+          },
+          Throttle: {
+            BurstLimit: 200,
+            RateLimit: 100,
+          },
+          ApiStages: [
+            {
+              ApiId: {
+                Ref: "ApiGatewayRestApi",
+              },
+              Stage: "${self:provider.stage}",
+            },
+          ],
+        },
+      },
+      goldmakManageFilesUsePlanKey: {
+        Type: "AWS::ApiGateway::UsagePlanKey",
+        Properties: {
+          KeyId: {
+            Ref: "goldmakManageFilesApiKey",
+          },
+          KeyType: "API_KEY",
+          UsagePlanId: {
+            Ref: "goldmakManageFilesUsePlan",
+          },
+        },
+      },
+    },
+  },
   // import the function via paths
   functions: { uploadFile },
   package: { individually: true },
