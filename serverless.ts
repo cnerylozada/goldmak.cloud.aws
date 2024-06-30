@@ -1,6 +1,6 @@
 import type { AWS } from "@serverless/typescript";
 
-import { uploadFiles } from "@functions/manageFiles";
+import { uploadFile } from "@functions/manageFiles";
 
 const serverlessConfiguration: AWS = {
   service: "goldmak-cloud-aws",
@@ -35,7 +35,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { uploadFiles },
+  functions: { uploadFile },
   package: { individually: true },
   custom: {
     esbuild: {

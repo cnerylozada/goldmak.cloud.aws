@@ -1,12 +1,12 @@
 import { handlerPath } from "@libs/handler-resolver";
 
-export const uploadFiles = {
-  handler: `${handlerPath(__dirname)}/handler.uploadFiles`,
+export const uploadFile = {
+  handler: `${handlerPath(__dirname)}/handler.uploadFile`,
   events: [
     {
       http: {
         method: "post",
-        path: "upload-files",
+        path: "resources/upload-file",
       },
     },
   ],
